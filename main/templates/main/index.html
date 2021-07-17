@@ -10,26 +10,40 @@
 </head>
 <body>
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-      </a>
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/adt" class="nav-link px-2 link-secondary">Автомобили</a></li>
-        <li><a href="/create" class="nav-link px-2 link-dark">Подать объявление</a></li>
-        <li><a href="/Str2" class="nav-link px-2 link-dark">Страница 2</a></li>
-        <li><a href="/Str3" class="nav-link px-2 link-dark">Страница 3</a></li>
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"></svg>
+
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-1">
+        <a href="/adt" class="nav-link px-3 link-dark">Автомобили</a>
+        <a href="/create" class="nav-link px-3 link-dark">Подать объявление</a>
+        <a href="/Str2" class="nav-link px-3 link-dark">Страница 2</a>
+        <a href="/Str3" class="nav-link px-3 link-dark">Страница 3</a>
       </ul>
 
-      <div class="col-md-3 text-end">
-          <a href="/registr" class="btn btn-primary">Вход/регистрация</a>
+
+    {% if user.is_active %}
+    <big style="color: brown">&nbsp&nbsp&nbsp&nbsp{{ user }}</big>
+      <div class="col-md-3 text-middle">
+          <a href="{% url 'logout' %}" class="btn btn-primary">Выход</a>
       </div>
+    {% else %}
+      <div class="col-md-0 text-middle">
+          <a href="{% url 'signin' %}" class="btn btn-primary">Вход</a>
+      </div>
+          <div class="col-md-0 text-middle">
+          <a href="{% url 'signup' %}" class="btn btn-primary">Регистрация</a>
+      </div>
+    {% endif %}
+
     </header>
 
       <div class="text-center">
+    {% block content %}
     <h1>Главная страница</h1>
     <p>Просто текст</p>
       </div>
+    {% endblock %}
 
 </body>
 </html>

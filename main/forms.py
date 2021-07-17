@@ -1,5 +1,11 @@
 from  .models import Vehicle
 from django.forms import ModelForm, TextInput, Textarea
+from django import forms
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
 
 
 class VehicleForm(ModelForm):
@@ -9,7 +15,7 @@ class VehicleForm(ModelForm):
         widgets = {
             "title": TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Введите название автомобиля'
+                'placeholder': 'Введите название автомобиля',
             }),
             "description": Textarea(attrs={
                 'class': 'form-control',

@@ -1,0 +1,18 @@
+{% extends 'main/index.html' %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+    <h1>Вход</h1><br>
+    <p>Введите Логин (Username) и Пароль (Password):</p>
+    <form action="{% url 'signin' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="Войти"></p>
+    </form>
+        <p class="login-callout mt-3">
+          Впервые на сайте?
+          <a data-ga-click="Sign in, switch to sign up" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;sign in switch to sign up&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/login&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="72d062e79bb6ab076a3b88b32943286ea51894183bd812a5038d00013946f239" href="/signup?source=login">Создать новый профиль</a>.
+        </p>
+      <div class="col-md-0 text-middle">
+          <a href="{% url 'home' %}" class="d-inline-block  px-2 py-1 mr-3 mr-sm-5">На главную</a>
+      </div>
+{% endblock %}
