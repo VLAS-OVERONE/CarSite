@@ -41,10 +41,6 @@ def Str2(request):
     return render(request, 'main/Str2.html')
 
 
-def Str3(request):
-    return render(request, 'main/Str3.html')
-
-
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
